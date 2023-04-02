@@ -17,7 +17,7 @@ class ListOurTeams extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-            ->label('Создать команду'),
+                ->label('Создать команду'),
             Actions\Action::make('Обновить заголовок')
               ->label('Обновить заголовок ceo')
               ->color('secondary')
