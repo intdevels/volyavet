@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OurTeamResource\Pages;
 use App\Filament\Resources\OurTeamResource\RelationManagers;
+use App\Filament\Resources\OurTeamResource\Widgets\OurTeamOverview;
 use App\Models\OurTeam;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -97,6 +98,13 @@ class OurTeamResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+          OurTeamOverview::class,
         ];
     }
 
