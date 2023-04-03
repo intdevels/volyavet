@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
           UserSeeder::class,
           PageSeeder::class,
-          AppealSeeder::class
+          AppealSeeder::class,
+          NewsSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

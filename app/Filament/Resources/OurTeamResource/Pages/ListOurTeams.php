@@ -35,7 +35,7 @@ class ListOurTeams extends ListRecords
               })
               ->form([
                 TextInput::make('seo_title')
-                  ->label('Загаловок')
+                  ->label('Заголовок')
                   ->required(),
             ])
         ];

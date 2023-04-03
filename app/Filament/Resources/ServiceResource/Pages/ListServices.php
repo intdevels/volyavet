@@ -39,7 +39,7 @@ protected static string $resource = ServiceResource::class;
             })
             ->form([
               TextInput::make('seo_title')
-                ->label('Загаловок')
+                ->label('Заголовок')
                 ->required(),
               TextInput::make('seo_title_inner')
                 ->label('Внутренний загаловок')

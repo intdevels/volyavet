@@ -27,12 +27,11 @@ class AppealResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-
           ->schema([
             Forms\Components\Card::make()
               ->schema([
                 Forms\Components\TextInput::make('title')
-                  ->label('Загаловок')
+                  ->label('Заголовок')
                   ->required(),
                 Forms\Components\Textarea::make('description')
                   ->label('Описание')
@@ -50,7 +49,7 @@ class AppealResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                  ->label('Загаловок'),
+                  ->label('Заголовок'),
                 Tables\Columns\TextColumn::make('description')
                   ->limit(50)
                   ->label('Описание'),

@@ -12,7 +12,7 @@ class ServiceOverview extends BaseWidget
     {
         $seo_title = Page::query()->section('home','services')->first();
         return [
-          Card::make('Загаловок для сео (главная стр.)', '')
+          Card::make('Заголовок для сео (главная стр.)', '')
             ->value($seo_title->seo_title),
           Card::make('Внутренний загаловок для сео ', '')
             ->value($seo_title->seo_title_inner),
