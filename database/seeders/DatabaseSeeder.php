@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
           AppealSeeder::class,
           NewsSeeder::class,
           ContactSeeder::class,
+          HelpAnimalSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

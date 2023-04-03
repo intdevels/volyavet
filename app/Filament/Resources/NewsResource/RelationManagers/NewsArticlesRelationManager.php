@@ -20,7 +20,7 @@ class NewsArticlesRelationManager extends RelationManager
 
     protected static ?string $label = '';
     protected static ?string $title = 'Статьи';
-    protected ?bool $isLoadingDeferred = true;
+
 
     public static function form(Form $form): Form
     {
