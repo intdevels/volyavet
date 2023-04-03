@@ -8,8 +8,6 @@ use Filament\Widgets\StatsOverviewWidget\Card;
 
 class OurTeamOverview extends BaseWidget
 {
-    protected static ?string $pollingInterval = null;
-
     protected function getCards(): array
     {
         $seo_title = Page::query()->section('home','our_team')->first();

@@ -13,7 +13,8 @@ class Page extends Model
     protected $fillable = [
       'name',
       'section_title',
-      'seo_title'
+      'seo_title',
+      'seo_title_inner'
     ];
 
 

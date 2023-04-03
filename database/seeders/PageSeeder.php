@@ -25,6 +25,7 @@ class PageSeeder extends Seeder
             'name' => 'home',
             'section_name' => 'services',
             'seo_title' => 'Услуги',
+            'seo_title_inner' => 'Услуги и цены',
             'seo_description' => 'Мы круглосуточно на связи и готовы оказать качественную медицинскую помощь вашему любимцу в любое время суток'
           ],
         ];

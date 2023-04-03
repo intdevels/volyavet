@@ -26,18 +26,23 @@ protected static string $resource = ServiceResource::class;
             ->mountUsing(function ($form) {
                 $form->fill([
                   'seo_title' => $this->getSectionTitle(),
+                  'seo_title_inner' => $this->getSectionInnerTitle(),
                   'seo_description' => $this->getSectionDescription()
                 ]);
             })
             ->action(function (array $data): void {
                 Page::query()->section('home', 'services')->update([
                   'seo_title' => $data['seo_title'],
+                  'seo_title_inner' => $data['seo_title_inner'],
                   'seo_description' => $data['seo_description']
                 ]);
             })
             ->form([
               TextInput::make('seo_title')
                 ->label('Загаловок')
+                ->required(),
+              TextInput::make('seo_title_inner')
+                ->label('Внутренний загаловок')
                 ->required(),
               Textarea::make('seo_description')
                 ->label('Описание')
@@ -54,12 +59,17 @@ protected static string $resource = ServiceResource::class;
     }
 
     protected function getSectionTitle(): string {
-        $seo_title = Page::query()->section('home','services')->first();
-        return $seo_title->seo_title;
+        $seo = Page::query()->section('home','services')->first();
+        return $seo->seo_title;
+    }
+
+    protected function getSectionInnerTitle(): string {
+        $seo = Page::query()->section('home','services')->first();
+        return $seo->seo_title_inner;
     }
 
     protected function getSectionDescription(): string {
-        $seo_title = Page::query()->section('home','services')->first();
-        return $seo_title->seo_description;
+        $seo = Page::query()->section('home','services')->first();
+        return $seo->seo_description;
     }
 }

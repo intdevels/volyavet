@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('section_name');
             $table->string('seo_title');
+            $table->string('seo_title_inner')->nullable();
             $table->text('seo_description')->nullable();
             $table->timestamps();
         });
