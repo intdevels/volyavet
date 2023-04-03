@@ -34,18 +34,19 @@ class ContactResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('telegram')
-                            ->tel()
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('address')
+                            ->label('Адрес')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
+                            ->label('Почта')
                             ->email()
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('phone')
-                            ->tel()
+                            ->label('Телефон')
                             ->required()
                             ->maxLength(255),
                     ])
@@ -59,9 +60,12 @@ class ContactResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('whatsapp'),
                 Tables\Columns\TextColumn::make('telegram'),
-                Tables\Columns\TextColumn::make('address'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('phone'),
+                Tables\Columns\TextColumn::make('address')
+                    ->label('Адрес'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Почта'),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('Телефон'),
             ])
             ->filters([
                 //
@@ -70,7 +74,7 @@ class ContactResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+
             ]);
     }
     
