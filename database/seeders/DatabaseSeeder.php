@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Storage::deleteDirectory('public');
+//        Storage::deleteDirectory('public');
         $this->call([
           UserSeeder::class,
-          PageSeeder::class
+          PageSeeder::class,
+          AppealSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
