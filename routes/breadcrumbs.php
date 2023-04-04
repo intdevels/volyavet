@@ -24,6 +24,19 @@ Breadcrumbs::for('services', function (BreadcrumbTrail $trail,\App\Models\Page $
     $trail->push($page->seo_title_inner, route('services'));
 });
 
+
+Breadcrumbs::for('library', function (BreadcrumbTrail $trail,\App\Models\News $news) {
+    $trail->parent('home');
+    $trail->push($news->title_library, route('library'));
+});
+
+Breadcrumbs::for('library-article', function (BreadcrumbTrail $trail,\App\Models\NewsArticle $article) {
+    $trail->parent('library',$article->news);
+    $trail->push($article->title_single, route('library-article',$article->slug));
+});
+
+
+
 // Home > Blog > [Category]
 //Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 //    $trail->parent('blog');
