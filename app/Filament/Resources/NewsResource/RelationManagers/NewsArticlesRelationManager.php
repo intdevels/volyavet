@@ -32,7 +32,9 @@ class NewsArticlesRelationManager extends RelationManager
                             ->label('Заголовок')
                             ->required()
                             ->reactive()
-                            ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                            ->afterStateUpdated(function (\Closure $set,$state){
+                                $set('slug',Str::slug($state));
+                            }),
 
                         Forms\Components\TextInput::make('slug')
                             ->label('Урл')

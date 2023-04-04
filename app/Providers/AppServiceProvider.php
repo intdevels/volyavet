@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+//        view()->share('contacts',
+//            Contact::query()->first());
+
+        view()->composer(
+            ['layout.includes.footer','contacts.index'],
+            function ($view) {
+                $view->with('contact',
+                    Contact::query()->first());
+            }
+        );
     }
 }
