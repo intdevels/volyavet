@@ -21,3 +21,4 @@ Route::get('/offer', [\App\Http\Controllers\PublicOfferController::class,'index'
 Route::get('/library', [\App\Http\Controllers\LibraryController::class,'index'])->name('library');
 Route::get('/contacts', [\App\Http\Controllers\ContactController::class,'index'])->name('contacts');
 Route::get('/services', [\App\Http\Controllers\ServiceController::class,'index'])->name('services');
+Route::get('/services/{slug}', [\App\Http\Controllers\ServiceController::class,'single'])->name('service-single');

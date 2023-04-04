@@ -13,32 +13,45 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ServiceResource extends Resource
 {
-    protected static ?string $model = Service::class;
+protected static ?string $model = Service::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $recordTitleAttribute = 'title';
-    protected static ?string $navigationGroup = 'Главная';
-    protected static ?string $pluralLabel = 'Услуги';
-    protected static ?string $label = '';
+protected static ?string $navigationIcon = 'heroicon-o-collection';
+protected static ?string $recordTitleAttribute = 'title';
+protected static ?string $navigationGroup = 'Главная';
+protected static ?string $pluralLabel = 'Услуги';
+protected static ?string $label = '';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-              Forms\Components\Card::make()
-                ->schema([
-                  Forms\Components\TextInput::make('title')
-                    ->label('Название')
-                    ->required(),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label('Название')
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(function (\Closure $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+
+                        Forms\Components\TextInput::make('slug')
+                            ->label('Урл')
+                            ->disabled()
+                            ->required()
+                            ->unique(Service::class, 'slug', ignoreRecord: true),
+
+
                   Forms\Components\Textarea::make('description')
-                    ->label('Описане'),
+                      ->label('Описане'),
                   Forms\Components\FileUpload::make('image')
-                    ->label('Изображение')
-                    ->image()
-                    ->required(),
+                      ->label('Изображение')
+                      ->image()
+                      ->required(),
                 ]),
             ]);
     }
@@ -52,7 +65,7 @@ class ServiceResource extends Resource
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Изображение'),
                 Tables\Columns\TextColumn::make('description')
-                  ->label('Описане'),
+                    ->label('Описане'),
             ])
             ->filters([
                 //
@@ -64,7 +77,7 @@ class ServiceResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ])
-          ->defaultSort('id');
+            ->defaultSort('id');
     }
 
     public static function getRelations(): array
@@ -77,7 +90,7 @@ class ServiceResource extends Resource
     public static function getWidgets(): array
     {
         return [
-          ServiceOverview::class,
+            ServiceOverview::class,
         ];
     }
 

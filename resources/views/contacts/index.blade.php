@@ -18,12 +18,6 @@
                         </li>
                     @endif
                 @endforeach
-                {{--<li class="page-navigation-item">--}}
-                    {{--<a href="#">Главная</a>--}}
-                {{--</li>--}}
-                {{--<li class="page-navigation-item">--}}
-                    {{--<span>Контакты</span>--}}
-                {{--</li>--}}
             </ul>
         </nav>
         <section class="contacts-page">

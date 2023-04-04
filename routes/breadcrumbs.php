@@ -19,9 +19,9 @@ Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->push('Контакты', route('contacts'));
 });
 
-Breadcrumbs::for('services', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('services', function (BreadcrumbTrail $trail,\App\Models\Page $page) {
     $trail->parent('home');
-    $trail->push('Контакты', route('contacts'));
+    $trail->push($page->seo_title_inner, route('services'));
 });
 
 // Home > Blog > [Category]
