@@ -6,12 +6,24 @@
     <div class="wrapper">
         <nav class="page-navigation">
             <ul class="page-navigation-list">
-                <li class="page-navigation-item">
-                    <a href="#">Главная</a>
-                </li>
-                <li class="page-navigation-item">
-                    <span>Контакты</span>
-                </li>
+
+                @foreach (\Diglactic\Breadcrumbs\Breadcrumbs::generate('contact') as $breadcrumb)
+                    @if(!$loop->last)
+                        <li class="page-navigation-item">
+                            <a href="{{$breadcrumb->url}}">{{ $breadcrumb->title }}</a>
+                        </li>
+                    @else
+                        <li class="page-navigation-item">
+                            <span>{{ $breadcrumb->title }}</span>
+                        </li>
+                    @endif
+                @endforeach
+                {{--<li class="page-navigation-item">--}}
+                    {{--<a href="#">Главная</a>--}}
+                {{--</li>--}}
+                {{--<li class="page-navigation-item">--}}
+                    {{--<span>Контакты</span>--}}
+                {{--</li>--}}
             </ul>
         </nav>
         <section class="contacts-page">
